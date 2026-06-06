@@ -1,51 +1,87 @@
-Combinatoria y Conteo en Python
-Este repositorio contiene la implementación en Python de algoritmos fundamentales para resolver problemas de conteo, específicamente permutaciones (con y sin repetición) y el cálculo de factoriales.
- Archivos del Proyecto
-combinatorias_bono.ipynb: Archivo principal que contiene toda la lógica matemática, las funciones implementadas y los casos de prueba.
-README.md: Este archivo de documentación.
- Problemas Resueltos
-1. Permutaciones y k-permutaciones
-Este problema surge cuando tratamos de ordenar un conjunto en un subconjunto más pequeño. Se puede ver como ordenar cierta cantidad de objetos en cajas, donde los objetos son nuestro valor  y  representa la cantidad de cajas disponibles.
-Fórmula:
+# 🔢 Combinatoria y Conteo en Python
 
-Análisis de Eficiencia:
-Iterativo: Tiene un crecimiento temporal lineal  y un uso de almacenamiento constante .
-Recursivo: Tiene un crecimiento lineal en tiempo y espacio . Puede ser peligroso en lenguajes como Python donde la pila de recursión está acotada por defecto.
-2. Coeficientes Multinomiales y Palabras con Letras Repetidas
-Utilizado en expansiones algebraicas y combinatoria con elementos idénticos. El ejercicio canónico es calcular cuántas palabras distintas se pueden formar con los caracteres de "BANANA". Se calcula dividiendo el factorial del total de caracteres () entre el producto de los factoriales de la cantidad de veces que se repite cada elemento ().
-Fórmula:
+Implementación en Python de algoritmos para resolver problemas de conteo: permutaciones (con y sin repetición) y cálculo de factoriales, sin librerías externas.
 
-Análisis de Eficiencia:
-Entrada de Texto (str): Crecimiento temporal  (donde  es el tiempo filtrando letras y  la cantidad de letras únicas). Gasto de memoria lineal .
-Entrada Numérica (list): Eficiencia temporal lineal  y eficiencia de almacenamiento constante , ya que no requiere crear estructuras adicionales.
- Instrucciones de Ejecución
-El código está escrito en Python puro y no requiere la instalación de librerías externas.
-Asegúrate de tener Python 3.x instalado en tu sistema, o utiliza un entorno virtual en la nube como Google Colab.
-Clona este repositorio o descarga el archivo principal del código.
-Si usas terminal, navega a la carpeta del proyecto y ejecuta: python combinatorias_bono.ipynb. Si usas un entorno interactivo (como Jupyter o Colab), simplemente ejecuta las celdas en orden secuencial.
-🧪 Ejemplos de Entrada, Salida y Evidencias de Pruebas
-El código incluye un banco de pruebas para verificar su correcto funcionamiento, cubriendo tanto casos de éxito como el manejo de errores (casos especiales).
-Ejemplos de Permutaciones P(n, r)
-Entrada: permutaciones_iterado(10, 3) ➔ Salida: 720.0
-Entrada: permutaciones_iterado(20, 5) ➔ Salida: 1860480.0
-Entrada: permutaciones_iterado(11, 6) ➔ Salida: 332640.0
-Ejemplos de Permutaciones con Repetición (Palabras)
-Entrada: contar_palabras('BANANA') ➔ Salida: 60
-Entrada: contar_palabras([4, 3, 2]) ➔ Salida: 1260
-Entrada: contar_palabras('PUMA') ➔ Salida: 24
-Entrada: contar_palabras('AAAAA') ➔ Salida: 1
-Evidencias de Casos Especiales y Manejo de Errores
-El sistema valida que no se procesen operaciones matemáticas inválidas:
-Error por :
-Entrada: permutaciones_iterado(3, 5)
-Salida: "si r es menor a 'n' no hay permutaciones"
-Error por valores negativos:
-Entrada: factorial_iterado(-5)
-Salida: "no hay factorial de un numero negativo"
-Error por listas con negativos:
-Entrada: contar_palabras([4, -2, 3])
-Salida: "no es posible realizar la operacion porque no existe factorial para negativos"
-Cadenas vacías (n=0):
-Entrada: contar_palabras('')
-Salida: 1
-contar_palabras('BANANA') ➔ Salida: 60Entrada: contar_palabras([4, 3, 2]) ➔ Salida: 1260Entrada: contar_palabras('PUMA') ➔ Salida: 24Entrada: contar_palabras('AAAAA') ➔ Salida: 1Evidencias de Casos Especiales y Manejo de ErroresEl sistema valida que no se procesen operaciones matemáticas inválidas:Error por $r > n$:Entrada: permutaciones_iterado(3, 5)Salida: "si r es menor a 'n' no hay permutaciones"Error por valores negativos:Entrada: factorial_iterado(-5)Salida: "no hay factorial de un numero negativo"Error por listas con negativos:Entrada: contar_palabras([4, -2, 3])Salida: "no es posible realizar la operacion porque no existe factorial para negativos"Cadenas vacías (n=0):Entrada: contar_palabras('')Salida: 1
+---
+
+## 📂 Archivos del proyecto
+
+```
+├── combinatorias_bono.ipynb   # Cuaderno principal con funciones, explicaciones y pruebas
+└── README.md    # Este archivo
+```
+
+---
+
+## 🚀 Cómo ejecutar
+
+**En Google Colab o Jupyter:** abre `combinatorias_bono.ipynb` y ejecuta las celdas en orden.
+
+**En terminal con Python 3:**
+```bash
+jupyter nbconvert --to script combinatorias_bono.ipynb
+python combinatorias_bono.py
+```
+
+No requiere instalar ninguna librería externa.
+
+---
+
+## 🧠 Problemas resueltos
+
+### 1. Permutaciones — `P(n, r)`
+
+Ordena `r` elementos tomados de un conjunto de `n`. Se puede pensar como distribuir objetos en cajas: `n` es la cantidad de objetos disponibles y `r` el número de cajas.
+
+$$P(n, r) = \frac{n!}{(n-r)!}$$
+
+Implementado en dos versiones:
+
+- **Iterativa** — tiempo `O(n)`, espacio `O(1)`
+- **Recursiva** — tiempo `O(n)`, espacio `O(n)` (cuidado con el límite de recursión de Python)
+
+---
+
+### 2. Coeficientes multinomiales — palabras con letras repetidas
+
+Calcula cuántas palabras distintas se pueden formar con los caracteres de una cadena (ej. `"BANANA"`). Divide el factorial del total de caracteres entre el producto de los factoriales de cada frecuencia de repetición.
+
+$$\frac{n!}{n_1! \cdot n_2! \cdots n_k!}$$
+
+Acepta dos tipos de entrada:
+
+- **`str`** — extrae las frecuencias automáticamente; tiempo `O(n·u)`, espacio `O(u)` donde `u` = letras únicas
+- **`list`** — recibe las frecuencias directamente; tiempo `O(k)`, espacio `O(1)`
+
+---
+
+## 🧪 Ejemplos de entrada y salida
+
+### Permutaciones
+
+| Llamada | Resultado |
+|---|---|
+| `permutaciones_iterado(10, 3)` | `720.0` |
+| `permutaciones_iterado(20, 5)` | `1860480.0` |
+| `permutaciones_iterado(11, 6)` | `332640.0` |
+
+### Palabras con letras repetidas
+
+| Llamada | Resultado |
+|---|---|
+| `contar_palabras('BANANA')` | `60` |
+| `contar_palabras([4, 3, 2])` | `1260` |
+| `contar_palabras('PUMA')` | `24` |
+| `contar_palabras('AAAAA')` | `1` |
+
+---
+
+## ⚠️ Casos especiales y manejo de errores
+
+| Caso | Entrada | Salida |
+|---|---|---|
+| `r > n` | `permutaciones_iterado(3, 5)` | `"si r es menor a 'n' no hay permutaciones"` |
+| Factorial negativo | `factorial_iterado(-5)` | `"no hay factorial de un numero negativo"` |
+| Lista con negativos | `contar_palabras([4, -2, 3])` | `"no es posible realizar la operacion porque no existe factorial para negativos"` |
+| Cadena o lista vacía | `contar_palabras('')` | `1` |
+| `P(0, 0)` | `permutaciones_iterado(0, 0)` | `1.0` |
