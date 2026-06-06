@@ -1,10 +1,10 @@
-# 🔢 Combinatoria y Conteo en Python
+#  Combinatoria y Conteo en Python
 
 Implementación en Python de algoritmos para resolver problemas de conteo: permutaciones (con y sin repetición) y cálculo de factoriales, sin librerías externas.
 
 ---
 
-## 📂 Archivos del proyecto
+##  Archivos del proyecto
 
 ```
 ├── combinatorias_bono.ipynb   # Cuaderno principal con funciones, explicaciones y pruebas
@@ -13,7 +13,7 @@ Implementación en Python de algoritmos para resolver problemas de conteo: permu
 
 ---
 
-## 🚀 Cómo ejecutar
+##  Cómo ejecutar
 
 **En Google Colab o Jupyter:** abre `combinatorias_bono.ipynb` y ejecuta las celdas en orden.
 
@@ -27,7 +27,7 @@ No requiere instalar ninguna librería externa.
 
 ---
 
-## 🧠 Problemas resueltos
+##  Problemas resueltos
 
 ### 1. Permutaciones — `P(n, r)`
 
@@ -76,7 +76,7 @@ Acepta dos tipos de entrada:
 
 ---
 
-## ⚠️ Casos especiales y manejo de errores
+##  Casos especiales y manejo de errores
 
 | Caso | Entrada | Salida |
 |---|---|---|
